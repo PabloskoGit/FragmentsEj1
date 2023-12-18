@@ -18,7 +18,13 @@ class ListViewEquipos : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        if (context is EquipoSeleccionado) {
+            comunicador = context
+        } else {
+            throw RuntimeException("$context debe implementar EquipoSeleccionado")
+        }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,12 +63,14 @@ class ListViewEquipos : Fragment() {
 
 data class Equipo(val nombre: String, val imagen: Int)
 
-class EquipoAdapter(context: Context, equipos: List<Equipo>) : ArrayAdapter<Equipo>(context, 0, equipos),
+class EquipoAdapter(context: Context, equipos: List<Equipo>) :
+    ArrayAdapter<Equipo>(context, 0, equipos),
     ListAdapter {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val equipo = getItem(position)
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.equipo_item, parent, false)
+        val view =
+            convertView ?: LayoutInflater.from(context).inflate(R.layout.equipo_item, parent, false)
 
         val nombreEquipo = view.findViewById<TextView>(R.id.nombre_equipo)
         val imagenEquipo = view.findViewById<ImageView>(R.id.imagen_equipo)
