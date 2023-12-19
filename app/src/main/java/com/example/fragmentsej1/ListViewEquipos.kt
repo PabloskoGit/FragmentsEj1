@@ -24,8 +24,6 @@ class ListViewEquipos : Fragment() {
             throw RuntimeException("$context debe implementar EquipoSeleccionado")
         }
     }
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,7 +37,7 @@ class ListViewEquipos : Fragment() {
             Equipo("FC Barcelona", R.drawable.barsa),
             Equipo("Real Madrid", R.drawable.real_madrid),
             Equipo("Valencia", R.drawable.valencia),
-            Equipo("Athleic Bilbao", R.drawable.athletic),
+            Equipo("Athletic Bilbao", R.drawable.athletic),
             Equipo("Atletico Madrid", R.drawable.atletico_madrid)
 
             // Añade aquí todos tus equipos
